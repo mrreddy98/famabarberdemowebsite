@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fama Barber Shop</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+<body style="background-image: url(./assests/images/barber-hero.jpg);">
+
+ <!-- Welcome Screen -->
+<div id="welcome-screen">
+  <img src="./assests/icon/logo.png" alt="Fama Logo" class="welcome-logo" />
+  <h1>Welcome to Fama Barber Shop</h1>
+</div>
+
+  <!-- Main Wrapper -->
+  <div id="main-wrapper" class="hidden">
+    
+    <!-- Header / Hero Section -->
+    <header class="hero">
+      <div class="hero-content">
+        <h1>Fama Barber Shop & Beauty Salon</h1>
+        <p>Your style, our passion.</p>
+        <a href="#appointment" class="btn-primary">Book Now</a>
+      </div>
+    </header>
+
+    <!-- SECTION 1: High-Quality Images of Shop and Services -->
+    <section class="split-section">
+      <!-- Left: Gallery Section -->
+      <div class="gallery-side">
+        <section class="gallery-section" id="gallery">
+          <h2 class="section-title">Explore Our Space & Style</h2>
+          <div class="carousel-container">
+            <button class="carousel-btn prev">&#10094;</button>
+            <div class="carousel-track">
+              <img src="./assests/images/shopinterior.jpg" alt="Shop Interior" />
+              <img src="./assests/images/fama5.jpg" alt="Barber Working" />
+              <img src="./assests/images/shavingservice.jpg" alt="Shaving Service" />
+              <img src="./assests/images/pexels-thgusstavo-2061820.jpg" alt="Hair Styling" />
+            </div>
+            <button class="carousel-btn next">&#10095;</button>
+          </div>
+        </section>
+      </div>
+
+      <!-- Right: Shop History & Mission -->
+      <div class="text-side">
+        <section class="mission-section" id="mission">
+          <h2 class="section-title glow">Our Story & Mission</h2>
+          <p class="mission-text intro">
+            At Fama Barber Shop and Beauty Salon, tradition meets trend. With passion in every trim, we craft styles that inspire.
+          </p>
+          <button class="know-more-btn" onclick="toggleMore()">Know More</button>
+          <div class="more-text" id="moreText">
+            <p class="mission-text">
+              Founded on excellence and trust, our journey began with a single chair and a big dream. Over the years, we’ve grown into a space where every haircut is a masterpiece.
+            </p>
+            <p class="mission-text">
+              Our mission is to offer world-class grooming with a personal touch. From modern fades to classic cuts, we’re here to keep you sharp, stylish, and confident.
+            </p>
+          </div>
+        </section>
+      </div>
+    </section>
+    <!-- SECTION: High-Quality Images of Shop and Services -->
+<section id="gallery">
+  <h2>Our Shop & Services</h2>
+  <div class="carousel" style="height:500px; width: 100%;object-position:center">
+    <div class="carousel-images" style="height: auto">
+      <img src="./assests/images/fama3.jpg" alt="Shop Interior 1">
+      <img src="./assests/images/fama5.jpg" alt="Shop Interior 2">
+      <img src="./assests/images/fama2.jpg" alt="Barber at Work">
+    </div>
+    <div class="carousel-buttons">
+      <button onclick="prevSlide()">❮</button>
+      <button onclick="nextSlide()">❯</button>
+    </div>
+  </div>
+</section>
+
+<style>
+  #gallery {
+    text-align: center;
+    padding: 2rem;
+    background: #111;
+    color: #f9a825;
+  }
+
+  .carousel {
+    position: relative;
+    overflow: hidden;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 12px;
+    border: 2px solid #f9a825;
+  }
+
+  .carousel-images {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .carousel-images img {
+    width: 100%;
+    border-radius: 10px;
+    flex-shrink: 0;
+  }
+
+  .carousel-buttons {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+  }
+
+  .carousel-buttons button {
+    background: rgba(0, 0, 0, 0.6);
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+</style>
+
+<script>
+  let currentIndex = 0;
+  const images = document.querySelectorAll('.carousel-images img');
+  const totalImages = images.length;
+
+  function updateCarousel() {
+    const offset = -currentIndex * 100;
+    document.querySelector('.carousel-images').style.transform = `translateX(${offset}%)`;
+  }
+
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % totalImages;
+    updateCarousel();
+  }
+
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+    updateCarousel();
+  }
+
+  setInterval(nextSlide, 4000); // Auto-slide every 4 seconds
+</script>
+<!-- SECTION: Shop History & Mission -->
+<section id="history">
+  <h2>Our Story & Mission</h2>
+  <div class="history-container">
+    <p>
+      Farmer Barber Shop was born from the simple idea of blending traditional grooming with modern style. From our humble beginnings in a small barn to becoming a local favorite, we’ve always stayed true to our roots: authenticity, precision, and community.
+    </p>
+    <p class="mission">
+      <strong>Our Mission:</strong> To provide high-quality grooming services that make every client feel confident, refreshed, and respected — all while supporting local farmers and craftsmen.
+    </p>
+  </div>
+</section>
+
+<style>
+  #history {
+    background-color: #1a1a1a;
+    padding: 3rem 1.5rem;
+    color: #f0f0f0;
+    text-align: center;
+  }
+
+  .history-container {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.8;
+  }
+
+  .mission {
+    margin-top: 1.5rem;
+    color: #f9a825;
+    font-weight: bold;
+  }
+</style>
+
+
+    <!-- SECTION 12: Appointment Booking -->
+    <!-- Placeholder for Appointment Booking Section -->
+     <!-- SECTION: Appointment Scheduling -->
+<section id="appointment" class="appointment-section">
+  <div class="container">
+    <h2>Book an Appointment</h2>
+    <form id="bookingForm">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" required>
+
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" required>
+
+      <label for="date">Select Date:</label>
+      <input type="date" id="date" required>
+
+      <label for="time">Select Time:</label>
+      <input type="time" id="time" required>
+
+      <label for="reminder">Set a Reminder:</label>
+      <select id="reminder">
+        <option value="none">None</option>
+        <option value="1hour">1 Hour Before</option>
+        <option value="1day">1 Day Before</option>
+      </select>
+
+      <button type="submit">Book Now</button>
+    </form>
+    <p id="confirmationMessage"></p>
+  </div>
+</section>
+
+  <!-- SECTION: Payment Methods & Subscriptions -->
+  <!-- Features 15–16 -->
+  <!-- Show accepted payment types + subscription plan options -->
+<!-- Payment Methods & Subscriptions Section -->
+<section id="payment-subscriptions" class="payment-section">
+  <h2>Payment Methods & Subscriptions</h2>
+
+  <!-- Accepted Payment Methods -->
+  <div class="payment-methods">
+    <h3>Accepted Payment Methods</h3>
+    <div class="payment-icons">
+      <img src="./assests/icon/visa.png" alt="Visa" />
+      <img src="./assests/icon/mastercard.png" alt="MasterCard" />
+      <img src="./assests/icon/pay pal.png" alt="PayPal" />
+      <img src="./assests/icon/Applepay.png" alt="Apple Pay" />
+      <img src="./assests/icon/gpay.png" alt="Google Pay" />
+    </div>
+  </div>
+
+  <!-- Subscription Plans -->
+  <div class="subscriptions">
+    <h3>Choose Your Plan</h3>
+    <div class="plans">
+      <div class="plan-card" onclick="selectPlan('basic')">
+        <h4>Basic</h4>
+        <p>$9.99/month</p>
+        <ul>
+          <li>1 Haircut per month</li>
+          <li>Basic Hair Wash</li>
+        </ul>
+        <button>Select</button>
+      </div>
+      <div class="plan-card" onclick="selectPlan('premium')">
+        <h4>Premium</h4>
+        <p>$19.99/month</p>
+        <ul>
+          <li>2 Haircuts per month</li>
+          <li>Hair Wash + Beard Trim</li>
+        </ul>
+        <button>Select</button>
+      </div>
+      <div class="plan-card" onclick="selectPlan('elite')">
+        <h4>Elite</h4>
+        <p>$29.99/month</p>
+        <ul>
+          <li>Unlimited Haircuts</li>
+          <li>Full Grooming Package</li>
+        </ul>
+        <button>Select</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <!-- SECTION 17-20: Features Covered (17–20) -->
+<section id="portfolio-media" class="section-container">
+  <h2 class="section-title">Portfolio & Media</h2>
+
+  <!-- Gallery of Past Styles -->
+  <div class="gallery">
+    <h3>Gallery of Past Styles</h3>
+    <div class="gallery-grid">
+      <img src="./assests/images/style1.jpg" alt="Style 1">
+      <img src="./assests/images/style2.jpg" alt="Style 2">
+      <img src="./assests/images/style3.jpeg" alt="Style 3">
+    </div>
+  </div>
+
+  <!-- Before/After -->
+  <div class="before-after">
+    <h3>Before & After Transformations</h3>
+    <div class="comparison-container">
+      <img src="./assests/images/before.jpg" class="before" alt="Before">
+      <img src="./assests/images/after.jpg" class="after" alt="After">
+    </div>
+  </div>
+
+  <!-- Video Clips -->
+  <div class="video-clips">
+    <h3>Video Clips</h3>
+    <video controls>
+      <source src="./assests/videos/3998440-uhd_4096_2160_25fps.mp4" type="video/mp4">
+      <source src="./assests/videos/3998445-uhd_4096_2160_25fps.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <!-- Hair Care Tips -->
+  <div class="hair-tips">
+    <h3>Hair Care Tips</h3>
+    <ul>
+      <li>Use sulfate-free shampoos.</li>
+      <li>Trim hair every 4-6 weeks to avoid split ends.</li>
+      <li>Avoid heat styling too often.</li>
+      <li>Use a deep conditioner once a week.</li>
+    </ul>
+  </div>
+</section>
+
+    <!-- SECTION 21-22: Features Covered (17–20) -->
+    <!-- Trends & Products Section -->
+<section id="trends-products" class="section dark-bg">
+  <h2>Trending Styles & Featured Products</h2>
+  <div class="trend-blog">
+    <article class="trend-item">
+      <h3>Top Beard Trends of 2025</h3>
+      <p>From rustic lumberjack styles to the polished executive look, see what's dominating the grooming world this year.</p>
+    </article>
+    <article class="trend-item">
+      <h3>Haircuts That Are Making Waves</h3>
+      <p>Explore fresh fades and textured cuts that define modern masculinity.</p>
+    </article>
+  </div>
+<h2>Shop Grooming Essentials</h2>
+  <div class="product-cards" id="store" >
+    <div class= "product-card" >
+      <img src="./assests/images/beardoil.jpg" alt="Beard Oil">
+      <h4>Premium Beard Oil</h4>
+      <p>$15.99</p>
+      <button onclick="addToCart('Hair Wax')">Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="./assests/images/hairwax.jpeg" alt="Hair Wax">
+      <h4>Matte Finish Hair Wax</h4>
+      <p>$12.50</p>
+      <button onclick="addToCart('Hair Wax')">Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="./assests/images/shampoo.jpeg" alt="Shampoo">
+      <h4>Shampoo</h4>
+      <p>$16.50</p>
+      <button onclick="addToCart('Shampoo')">Add to Cart</button>
+    </div>
+    <div class="product-card">
+    <img src="./assests/images/Facewash.jpg" alt="Face Wash">
+      <h3>Face Wash</h3>
+      <p>$20.79</p>
+      <button onclick="addToCart('Face Wash')">Add to Cart</button>
+  </div>
+      <div class="product-card">
+      <img src="./assests/images/lotion.jpeg" alt="Lotion">
+      <h4>Lotion</h4>
+      <p>$10</p>
+      <button onclick="addToCart('Lotion')">Add to Cart</button>
+  </div>
+</section>
+
+<!-- Feature 27: Virtual Hairstyle Try-On -->
+<section id="virtual-tryon">
+  <h2>Virtual Hairstyle Try-On</h2>
+  <input type="file" id="upload-photo" accept="image/*" />
+  <canvas id="tryon-canvas"></canvas>
+</section>
+
+<!-- Feature 28: AI-Powered Style Recommendations -->
+<section id="style-recommendation">
+  <h2>AI-Powered Style Recommendations</h2>
+  <button onclick="getStyleRecommendation()">Get Recommendation</button>
+  <p id="recommendation-output"></p>
+</section>
+
+<!-- Feature 29: Loyalty Program -->
+<section id="loyalty-program">
+  <h2>Loyalty Program</h2>
+  <div id="login-section">
+    <input type="text" id="username" placeholder="Enter Username" />
+    <input type="password" id="password" placeholder="Enter password" />
+
+    <button onclick="login()">Login</button>
+    <button onclick="Signin()">Signin</button>
+  </div>
+  <div id="points-section" style="display:none;">
+    <p id="user-welcome"></p>
+    <p>Loyalty Points: <span id="loyalty-points">0</span></p>
+    <p>Discount: <span id="discount">0%</span></p>
+  </div>
+</section>
+
+<!-- Feature 30: Live Social Media Feed -->
+<section id="social-feed">
+  <h2>Follow Us On Instagram</h2>
+  <!-- Example using LightWidget or SnapWidget -->
+  <iframe src="https://snapwidget.com/embed/your-widget-code" class="social-frame" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
+</section>
+
+
+<!-- Feature 31: Reviews & Ratings -->
+<section id="reviews">
+  <h2>Leave a Review</h2>
+  <form id="review-form">
+    <input type="text" placeholder="Your Name" required />
+    <select required>
+      <option value="">Rating</option>
+      <option value="5">⭐⭐⭐⭐⭐</option>
+      <option value="4">⭐⭐⭐⭐</option>
+      <option value="3">⭐⭐⭐</option>
+      <option value="2">⭐⭐</option>
+      <option value="1">⭐</option>
+    </select>
+    <textarea placeholder="Write your review here..." required></textarea>
+    <button type="submit">Submit Review</button>
+  </form>
+  <div id="submitted-reviews"></div>
+</section>
+
+
+<!-- Feature 32: Referral Program -->
+<section id="referral">
+  <h2>Refer a Friend & Earn!</h2>
+  <p>Share your referral code and earn 10% off for each friend who books a service.</p>
+  <div id="referral-box">
+    <input type="text" id="referral-code" value="FARMER123" readonly />
+    <button onclick="copyReferralCode()">Copy Code</button>
+  </div>
+</section>
+
+<section id="subscription-boxes" class="section-box" style="background-image: url('./assests/images/fama5.jpg');">
+  <h2>Monthly Subscription Boxes</h2>
+  <div class="subscription-plans">
+    <div class="box-plan">
+      <h3>Basic Box</h3>
+      <p>Essential grooming items</p>
+      <span>$19.99/month</span>
+    </div>
+    <div class="box-plan">
+      <h3>Deluxe Box</h3>
+      <p>Premium grooming set with exclusive items</p>
+      <span>$39.99/month</span>
+    </div>
+  </div>
+</section>
+
+<section id="limited-time-offer" class="section-box">
+  <h2>Flash Deal Ends In:</h2>
+  <div id="countdown-timer">00:00:00</div>
+</section>
+<script>
+  function startCountdown(duration) {
+    const display = document.getElementById('countdown-timer');
+    let timer = duration;
+
+    const interval = setInterval(() => {
+      const hours = String(Math.floor(timer / 3600)).padStart(2, '0');
+      const minutes = String(Math.floor((timer % 3600) / 60)).padStart(2, '0');
+      const seconds = String(timer % 60).padStart(2, '0');
+
+      display.textContent = `${hours}:${minutes}:${seconds}`;
+
+      if (--timer < 0) {
+        clearInterval(interval);
+        display.textContent = "Offer Expired!";
+      }
+    }, 1000);
+  }
+
+  // Start countdown with 1 hour (3600 seconds)
+  startCountdown(3600);
+</script>
+<script>
+  const themeSwitch = document.getElementById('themeSwitch');
+
+  themeSwitch.addEventListener('change', () => {
+    document.body.classList.toggle('light-mode');
+  });
+</script>
+
+<div id="language-selector">
+  <select onchange="changeLanguage(this.value)">
+    <option value="en">English</option>
+    <option value="es">Español</option>
+    <option value="fr">Français</option>
+  </select>
+</div>
+
+<h2 data-i18n="welcome">Welcome to Farmer Barber Shop</h2>
+<p data-i18n="description">Experience the best grooming services in town.</p>
+
+<script>
+  const translations = {
+    en: {
+      welcome: "Welcome to Farmer Barber Shop",
+      description: "Experience the best grooming services in town."
+    },
+    es: {
+      welcome: "Bienvenido a Farmer Barber Shop",
+      description: "Experimenta los mejores servicios de peluquería."
+    },
+    fr: {
+      welcome: "Bienvenue chez Farmer Barber Shop",
+      description: "Découvrez les meilleurs services de coiffure."
+    }
+  };
+
+  function changeLanguage(lang) {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      el.textContent = translations[lang][key];
+    });
+  }
+</script>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Farmer Barber Shop Features</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: #121212;
+      color: #ffffff;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #1f1f1f;
+      padding: 10px 20px;
+    }
+    .mic-btn {
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+    }
+    section {
+      padding: 30px 20px;
+    }
+    h2 {
+      margin-bottom: 20px;
+      color: #ffcc00;
+    }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .video-grid iframe {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .wheel-popup {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+    .wheel-container {
+      background: #222;
+      padding: 20px;
+      border-radius: 20px;
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+    }
+    .wheel-container button {
+      margin-top: 20px;
+      background: #ffcc00;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 10px;
+    }
+    .behind-scenes {
+      background: #1b1b1b;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .behind-scenes p {
+      margin-bottom: 10px;
+    }
+    .btn-show-wheel {
+      display: inline-block;
+      margin: 20px 0;
+      padding: 10px 15px;
+      background-color: #ff6600;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🎉 Farmer Barber Shop</h1>
+  <!-- Feature 38: Voice Navigation -->
+  <button class="mic-btn" onclick="startVoiceCommand()" title="Voice Navigation 🎙️">🎤</button>
+</header>
+
+<!-- Feature 39: Spin-the-Wheel Discounts -->
+<section>
+  <h2>🎯 Spin-the-Wheel Discount</h2>
+  <button class="btn-show-wheel" onclick="document.getElementById('wheelPopup').style.display='flex'">Try Your Luck</button>
+</section>
+
+<div class="wheel-popup" id="wheelPopup">
+  <div class="wheel-container">
+    <h3>Spin to Win!</h3>
+    <p id="discount-result">Click spin to get your reward!</p>
+    <button onclick="spinWheel()">🎡 Spin</button>
+    <br><br>
+    <button onclick="document.getElementById('wheelPopup').style.display='none'">Close</button>
+  </div>
+</div>
+
+<!-- Feature 40: Video Tutorials -->
+<section>
+  <h2>🎥 Video Tutorials</h2>
+  <div class="video-grid">
+    <iframe src="./assests/videos/3998440-uhd_4096_2160_25fps.mp4" title="Haircut Tutorial" controls allowfullscreen></iframe>
+    <iframe src="./assests/videos/3998445-uhd_4096_2160_25fps.mp4" title="Beard Grooming" controls allowfullscreen></iframe>
+    <iframe src="./assests/videos/3998516-uhd_4096_2160_25fps.mp4" title="Shaving Techniques" controlsallowfullscreen></iframe>
+  </div>
+</section>
+
+<!-- Feature 41: Behind-the-Scenes -->
+<section class="behind-scenes">
+  <h2>🎬 Behind the Scenes</h2>
+  <p>Every morning, we sanitize the shop and prepare the tools.</p>
+  <p>Here’s a sneak peek into our daily operations:</p>
+  <div>
+    <video src="./assests/videos/Dailywork.mp4" width="200PX" height="150px" controls allowfullscreen></video>
+    <video src="./assests/videos/cleaning2.mp4" width="200PX" height="150px" controls allowfullscreen></video>
+  </div>
+</section>
+
+<!-- JavaScript -->
+<script>
+  // Feature 38: Voice Navigation
+  function startVoiceCommand() {
+    if (!('webkitSpeechRecognition' in window)) {
+      alert("Voice recognition not supported in this browser.");
+      return;
+    }
+
+    const recognition = new webkitSpeechRecognition();
+    recognition.lang = "en-US";
+    recognition.start();
+
+    recognition.onresult = function(event) {
+      const command = event.results[0][0].transcript.toLowerCase();
+      alert("You said: " + command);
+
+      if (command.includes("video")) {
+        window.scrollTo({ top: document.querySelector('.video-grid').offsetTop, behavior: 'smooth' });
+      } else if (command.includes("discount")) {
+        document.getElementById('wheelPopup').style.display = 'flex';
+      } else if (command.includes("behind") || command.includes("scene")) {
+        window.scrollTo({ top: document.querySelector('.behind-scenes').offsetTop, behavior: 'smooth' });
+      } else {
+        alert("Sorry, command not recognized.");
+      }
+    };
+  }
+
+  // Feature 39: Spin-the-Wheel Discounts
+  function spinWheel() {
+    const prizes = ["10% Off", "Free Beard Trim", "5% Off", "Free Hair Wash", "20% Off", "Try Again"];
+    const randomPrize = prizes[Math.floor(Math.random() * prizes.length)];
+    document.getElementById('discount-result').innerText = `🎉 You got: ${randomPrize}`;
+  }
+</script>
+
+
+<section id="contact-info" class="section dark-bg">
+  <h2>Contact Us</h2>
+  <p>📍500 N Bell Ave #109, Denton, TX 76209</p>
+  <div class="map-container">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18..." loading="lazy" style="border:0;" allowfullscreen=""></iframe>
+  </div>
+  <div class="hours-social">
+    <div class="hours">
+      <h4>Operating Hours</h4>
+      <p>Mon–Sat: 9AM – 8PM</p>
+      <p>Sun: Closed</p>
+    </div>
+    <div class="social-icons">
+      <a href="#"><img src="./assests/icon/facebook_5968764.png" alt="Facebook"></a>
+      <a href="#"><img src="./assests/icon/instagram_2111463.png" alt="Instagram"></a>
+      <a href="#"><img src="./assests/icon/twitter_5968830.png" alt="Twitter"></a>
+    </div>
+  </div>
+</section>
+<!-- Live Chat Widget (Tawk.to) -->
+<script type="text/javascript">
+  var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+  (function () {
+    var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+    s1.async = true;
+    s1.src = 'https://embed.tawk.to/YOUR_PROPERTY_ID/default';
+    s1.charset = 'UTF-8';
+    s1.setAttribute('crossorigin', '*');
+    s0.parentNode.insertBefore(s1, s0);
+  })();
+</script>
+    <footer class="footer">
+      <p>© 2025 Fama Barber Shop. All rights reserved.</p>
+    </footer>
+
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
